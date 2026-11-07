@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b1220">
+  <title>CubeSolve — 3×3 Solver</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/cubejs@1.3.2/lib/cube.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cubejs@1.3.2/lib/solve.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-icon">▦</span> Cube<span>Solve</span></a>
+    <span class="version">3×3×3 SOLVER</span>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="eyebrow"><span class="live-dot"></span> YOUR CUBE, SOLVED</div>
+      <h1>Let's solve your<br><span>Rubik's Cube.</span></h1>
+      <p>Enter the colors on all six sides, then get a move-by-move solution.</p>
+    </section>
+
+    <section class="workspace">
+      <div class="panel input-panel">
+        <div class="panel-heading">
+          <div><span class="step">01</span><h2>Enter cube colors</h2></div>
+          <button class="text-button" id="resetBtn">↺ Reset</button>
+        </div>
+        <div class="legend">
+          <span class="legend-dot"></span> Tap a square, then choose its color below.
+        </div>
+        <div class="cube-net" id="cubeNet"></div>
+        <div class="palette-wrap">
+          <div class="palette-label">COLOR PALETTE</div>
+          <div class="palette" id="palette"></div>
+        </div>
+        <div class="actions">
+          <button class="btn btn-secondary" id="scrambleBtn">⤨ Example scramble</button>
+          <button class="btn btn-primary" id="solveBtn">Solve my cube <span>→</span></button>
+        </div>
+        <p class="hint">Standard color layout: U = white, R = red, F = green, D = yellow, L = orange, B = blue. Center squares are fixed.</p>
+      </div>
+
+      <aside class="panel result-panel">
+        <div class="panel-heading">
+          <div><span class="step">02</span><h2>Solution</h2></div>
+          <span class="status" id="status">WAITING</span>
+        </div>
+        <div id="emptyState" class="empty-state">
+          <div class="cube-illustration">
+            <div class="mini-face"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          </div>
+          <h3>Your solution appears here</h3>
+          <p>Fill in all six faces and press <b>Solve my cube</b>.</p>
+        </div>
+        <div id="solutionState" class="solution-state hidden">
+          <div class="solution-summary">
+            <div><strong id="moveCount">0</strong><span>total moves</span></div>
+            <button class="copy-button" id="copyBtn">Copy moves</button>
+          </div>
+          <div class="moves" id="moves"></div>
+          <div class="instruction-box">
+            <span class="instruction-icon">✦</span>
+            <div><b>How to read the moves</b><p>R = right clockwise · R' = right counter-clockwise · R2 = right twice. View the face you are turning directly.</p></div>
+          </div>
+          <div class="step-controls">
+            <button class="btn btn-secondary" id="prevBtn" disabled>← Previous</button>
+            <span id="stepLabel">Step 0 of 0</span>
+            <button class="btn btn-primary" id="nextBtn" disabled>Next →</button>
+          </div>
+          <div class="current-move" id="currentMove">Ready when you are</div>
+        </div>
+        <div id="errorBox" class="error-box hidden"></div>
+      </aside>
+    </section>
+
+    <footer>Made for cube learners · 3×3 beginner-friendly solver</footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
